@@ -4,20 +4,25 @@ import Todo(todo)
 
 -- синус числа (формула Тейлора)
 sin :: Double -> Double
-sin x = map (exp^(x*sqrt(-1))-exp^(x*(-sqrt(-1)))/(2*sqrt(-1))[1..]
+sin x = (exp^(x*sqrt(-1))-exp^(x*(-sqrt(-1)))/(2*sqrt(-1))
 
 -- косинус числа (формула Тейлора)
 cos :: Double -> Double
-cos x = map (exp^(x*sqrt(-1))+exp^(x*(-sqrt(-1)))/2)[1..]
+cos x = (exp^(x*sqrt(-1))+exp^(x*(-sqrt(-1)))/2)
 
 -- наибольший общий делитель двух чисел
 gcd :: Integer -> Integer -> Integer
-gcd x 0 = x
-gcd x y = gcd y (x `mod` y)
-
+gcd x y 
+    | x == 0    = y
+    | y == 0    = x
+    | otherwise = gcd y (mod x y)
 -- существует ли полный целочисленный квадрат в диапазоне [from, to)?
 doesSquareBetweenExist :: Integer -> Integer -> Bool
-doesSquareBetweenExist from to = todo
+doesSquareBetweenExist from to 
+    | from == to    = False
+    | mod' x 1 == 0 = True 
+    | otherwise     = doesSquareBetweenExist (from + 1) to
+    where x = sqrt (fromIntegral from)
 
 -- является ли дата корректной с учётом количества дней в месяце и
 -- вискокосных годов?
@@ -27,7 +32,11 @@ isDateCorrect day month year =
 -- возведение числа в степень, duh
 -- готовые функции и плавающую арифметику использовать нельзя
 pow :: Integer -> Integer -> Integer
-pow x y = todo
+pow x y 
+    | y == 0 = 1
+    | y == 1 = x
+    | even y = pow (x * x) (y `div` 2)
+    | odd y  = x * pow (x * x) ((y - 1) `div` 2)
 
 -- является ли данное число простым?
 isPrime :: Integer -> Bool
