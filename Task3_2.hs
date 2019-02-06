@@ -12,8 +12,6 @@ listToRList :: [a] -> ReverseList a
 listToRList []    = RNil
 listToRList (h:t) = RCons (listToRList t) h
 
--- Реализуйте классы Eq, Ord, Show, Monoid, Functor
-
 instance (Eq a) => Eq (ReverseList a) where
     (==) RNil RNil                                 = True
     (==) RNil _                                    = False
