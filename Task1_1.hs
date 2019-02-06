@@ -37,13 +37,7 @@ evaluate expression = case expression of
             (Plus, IntConstant left, IntConstant right) -> IntConstant (left + right)
             (Minus, IntConstant left, IntConstant right) -> IntConstant (left - right)
             (Times, IntConstant left, IntConstant right) -> IntConstant (left * right)
-            (Plus, IntConstant 0, right) -> right
-            (Times, IntConstant 1, right) -> right
-            (Times, IntConstant 0, right) -> IntConstant 0
-            (Plus, left, IntConstant 0) -> left
-            (Minus, left, IntConstant 0) -> left
-            (Times, left, IntConstant 0) -> IntConstant 0
-            (Times, left, IntConstant 1) -> left
+  
             _ -> BinaryTerm operartion left right 
         where
             left  = evaluate lhs
