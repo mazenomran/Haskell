@@ -20,7 +20,7 @@ infixl 6 |+|
 infixl 6 |-|
 
 (|*|) :: Term -> Term -> Term
-(|*|) l r = BinaryTerm Times l r
+(|*|) l r = BinaryTerm Prod l r
 infixl 7 |*|
 
 
