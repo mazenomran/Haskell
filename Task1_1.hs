@@ -2,7 +2,7 @@ module Task1_1 where
 
 import Todo(todo)
 
-data Operation = Plus | Minus | Mult deriving (Show, Eq)
+data Operation = Plus | Minus | Prod deriving (Show, Eq)
 
 data Term = IntConstant{ intValue :: Int }           -- числовая константа
             | Variable{ varName :: String }          -- переменная
