@@ -13,15 +13,14 @@ data Term = IntConstant{ intValue :: Int }           -- числовая кон�
 -- ассоциативность и приоритет
 (|+|) :: Term -> Term -> Term
 (|+|) l r = BinaryTerm Plus l r
+infixl 6 |+|
 
 (|-|) :: Term -> Term -> Term
 (|-|) l r = BinaryTerm Minus l r
+infixl 6 |-|
 
 (|*|) :: Term -> Term -> Term
-(|*|) l r = BinaryTerm Prod l r
-
-infixl 6 |+|
-infixl 6 |-|
+(|*|) l r = BinaryTerm Times l r
 infixl 7 |*|
 
 
