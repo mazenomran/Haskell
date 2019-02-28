@@ -1,14 +1,43 @@
 module Task1_2 where
 
 import Todo(todo)
+import Data.Fixed
+import Prelude hiding (sin, cos, gcd)
 
 -- синус числа (формула Тейлора)
 sin :: Double -> Double
-sin x = (exp^(x*sqrt(-1))-exp^(x*(-sqrt(-1)))/(2*sqrt(-1))
+sin x = calculateSin n newX s i where 
+    newX = mod' x (2 * pi) :: Double
+    n = newX :: Double
+    s = 0.0 :: Double
+    i = 1 :: Int
+
+calculateSin :: Double -> Double -> Double -> Int -> Double
+calculateSin n x s i = if (abs n < eps) then s 
+    else calculateSin (n * (generalNum x / denomForSin i)) x (s + n) (i + 1)
+    where eps = 1e-8 :: Double
+
+generalNum :: Double -> Double
+generalNum x = (-1.0) * x * x
+
+denomForSin :: Int -> Double
+denomForSin i = ((2 * (fromIntegral i)) * (2 * (fromIntegral i) + 1))
 
 -- косинус числа (формула Тейлора)
 cos :: Double -> Double
-cos x = (exp^(x*sqrt(-1))+exp^(x*(-sqrt(-1)))/2)
+cos x = calculateCos n newX s i where
+    newX = mod' x (2 * pi) :: Double
+    n = 1.0 :: Double
+    s = 0.0 :: Double
+    i = 1 :: Int
+
+calculateCos :: Double -> Double -> Double -> Int -> Double
+calculateCos n x s i = if abs n < eps then s 
+    else calculateCos (n * (generalNum x / denomForCos i)) x (s + n) (i + 1) 
+    where eps = 1e-8 :: Double
+
+denomForCos :: Int -> Double
+denomForCos i = ((2 * (fromIntegral i) - 1) * (2 * (fromIntegral i)))
 
 -- наибольший общий делитель двух чисел
 gcd :: Integer -> Integer -> Integer
