@@ -57,7 +57,6 @@ doesSquareBetweenExist from to
 -- вискокосных годов?
 isDateCorrect :: Integer -> Integer -> Integer -> Bool
 isDateCorrect day month year = 
-
 -- возведение числа в степень, duh
 -- готовые функции и плавающую арифметику использовать нельзя
 pow :: Integer -> Integer -> Integer
